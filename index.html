@@ -1,15 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Enock Musyoka</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hooked on AI</title>
+  <!-- Lottie player for animations -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    :root {
+      --dark-bg: #0f172a;
+      --highlight: #94a3b8;
+      --accent: #f97316;
+      --border-radius: 8px;
+
+      /* HEADER STATES */
+      --hdr-pad-full: 1.5rem 1rem;
+      --hdr-font-full: 3.2rem;
+      --link-pad-full: .4rem .9rem;
+      --sub-opacity-full: 1;
+
+      --hdr-pad-shrunk: .3rem 1rem;
+      --hdr-font-shrunk: 1.6rem;
+      --link-pad-shrunk: .2rem .6rem;
+      --sub-opacity-shrunk: 0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--dark-bg);
+      color: white;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* FIXED ANIMATED HEADER */
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: var(--dark-bg);
+      text-align: center;
+      padding: var(--hdr-pad-full);
+      border-bottom: 1px solid #1c1e2e;
+      transition: padding .3s;
+      z-index: 100;
+    }
+    header h1 {
+      display: inline-block;
+      overflow: hidden; white-space: nowrap;
+      border-right: .15em solid var(--accent);
+      color: var(--accent);
+      font-size: var(--hdr-font-full);
+      max-width: 14ch;
+      animation: typing 3s steps(14), blink .75s step-end infinite;
+      transition: font-size .3s;
+    }
+    header p {
+      margin: .5rem 0 1rem;
+      color: var(--highlight);
+      opacity: var(--sub-opacity-full);
+      transition: opacity .3s;
+    }
+    .links {
+      display: inline-flex; gap: 1rem;
+    }
+    .links a {
+      padding: var(--link-pad-full);
+      border: 2px solid var(--accent);
+      border-radius: var(--border-radius);
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .3s, color .3s, transform .3s, padding .3s;
+    }
+    .links a:hover {
+      background: var(--accent);
+      color: var(--dark-bg);
+      transform: translateY(-3px);
+    }
+    header.shrunk {
+      padding: var(--hdr-pad-shrunk);
+    }
+    header.shrunk h1 {
+      font-size: var(--hdr-font-shrunk);
+    }
+    header.shrunk p {
+      opacity: var(--sub-opacity-shrunk);
+    }
+    header.shrunk .links a {
+      padding: var(--link-pad-shrunk);
+    }
+
+    @keyframes typing { from { width: 0; } to { width: 14ch; } }
+    @keyframes blink  { 50% { border-color: transparent; } }
+
+    /* make room for header */
+    body { padding-top: 0; } /* adjusted by JS below */
+
+    /* COMMON SECTION STYLES */
+    .section { width:100%; padding:80px 20px 20px; }
+    .container { max-width:1100px; margin:0 auto; }
+    .flex { display:flex; gap:2rem; align-items:center; }
+    .flex.reverse { flex-direction:row-reverse; }
+    .text { flex:1; }
+    .text h2 { color:var(--accent); font-size:2rem; margin-bottom:1rem; }
+    .text p  { margin-bottom:.5rem; }
+    .image { flex:1; text-align:center; }
+    .image lottie-player, .image img { width:260px; max-width:100%; }
+
+    /* INTRO BLOCK BACKGROUNDS */
+    .problem-section { background:#1e293b; }
+    .learn-section   { background:#2c2f45; }
+    .matters-section { background:#374151; }
+
+    /* WHY‑IT‑MATTERS ICON GRID */
+    .why-icons {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+    .why-icons .icon-box {
+      background:#111827;
+      border-radius:var(--border-radius);
+      padding:1rem;
+      text-align:center;
+      transition:transform .3s,box-shadow .3s;
+      cursor:pointer;
+    }
+    .why-icons .icon-box:hover {
+      transform:translateY(-6px) scale(1.05);
+      box-shadow:0 10px 25px rgba(0,0,0,0.4);
+    }
+    .why-icons .icon-box span {
+      margin-top:.5rem;
+      display:block;
+      font-weight:600;
+      color:white;
+    }
+
+    /* BLOG GRID & CARDS */
+    #blog { background:#1f2937; }
+    .blog-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:2rem;
+      margin-top:2rem;
+    }
+    .blog-card {
+      background:#1c1f2b;
+      border-radius:var(--border-radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:transform .3s,box-shadow .3s;
+    }
+    .blog-card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 12px 30px rgba(0,0,0,0.5);
+    }
+    .card-cover {
+      height:200px;
+      background:#111827;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .card-content {
+      padding:1rem;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    .card-content h3 {
+      color:var(--accent);
+      font-size:1.2rem;
+      margin-bottom:.6rem;
+    }
+    .card-content p {
+      color:#cbd5e1;
+      font-size:.95rem;
+      flex:1;
+      margin-bottom:1rem;
+    }
+    .read-more {
+      align-self:flex-start;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      transition:color .2s;
+    }
+    .read-more:hover { color:#fdba74; }
+
+    /* INLINE ARTICLES */
+    .article-section {
+      display:none;
+      background:#2e3346;
+      padding:2rem 1rem;
+    }
+    .article-section:target {
+      display:block;
+    }
+    .article-section h2 {
+      color:var(--accent);
+      font-size:2rem;
+      margin-bottom:1rem;
+    }
+    .article-section p {
+      color:#e2e8f0;
+      margin-bottom:1rem;
+    }
+    .article-section lottie-player {
+      width:320px; height:320px; margin:1rem auto; display:block;
+    }
+    .close-btn {
+      background:transparent;
+      border:none;
+      color:var(--accent);
+      font-size:1rem;
+      cursor:pointer;
+      float:right;
+      margin-bottom:1rem;
+    }
+
+    /* POLL SECTION */
+    #poll { background:#2e3346; }
+    .quiz-prompt {
+      background: linear-gradient(135deg, #f97316, #94a3b8);
+      padding:2rem; border-radius:var(--border-radius);
+      text-align:center; margin-bottom:1.5rem;
+    }
+    .quiz-prompt h2 {
+      font-size:2rem; color:#0f172a; margin-bottom:.5rem;
+    }
+    .quiz-prompt p {
+      color:#0f172a; margin-bottom:1rem;
+    }
+    #startQuiz {
+      padding:.6rem 1.2rem; background:#0f172a; color:white;
+      border:none; border-radius:var(--border-radius); font-weight:600;
+      cursor:pointer; transition:background .3s;
+    }
+    #startQuiz:hover { background:#1c1e2e; }
+
+    .poll-form { display:none; }
+    .poll-form .poll-question {
+      margin-bottom:1.2rem;
+    }
+    .poll-form label {
+      display:block;
+      margin-bottom:.4rem;
+      cursor:pointer;
+    }
+    .poll-form input[type="radio"] {
+      margin-right:.5rem;
+    }
+    #pollSubmit {
+      display:inline-block;
+      padding:.6rem 1.2rem;
+      background:var(--accent);
+      color:var(--dark-bg);
+      border:none;
+      border-radius:var(--border-radius);
+      font-weight:600;
+      cursor:pointer;
+      transition:background .3s;
+    }
+    #pollSubmit:hover {
+      background:#fdba74;
+    }
+    #pollResult {
+      margin-top:2rem;
+      text-align:center;
+    }
+    #scoreDisplay {
+      font-size:3rem;
+      color:var(--accent);
+      margin-bottom:1rem;
+      display:none;
+    }
+    #levelText {
+      font-size:1.25rem; color:var(--highlight);
+    }
+
+    /* TOOLKIT SECTION */
+    #toolkit { background:#1e293b; }
+    #toolkit h2 {
+      color:var(--accent);
+      font-size:2rem;
+      margin-bottom:1rem;
+      text-align:center;
+    }
+    .toolkit-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:2rem;
+      margin-top:2rem;
+    }
+    .toolkit-item {
+      background:#111827;
+      border-radius:var(--border-radius);
+      padding:1rem;
+      text-align:center;
+      transition:transform .3s,box-shadow .3s;
+    }
+    .toolkit-item:hover {
+      transform:translateY(-4px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.4);
+    }
+    .toolkit-item lottie-player {
+      width:80px; height:80px;
+      margin:0 auto 0.5rem;
+    }
+    .toolkit-item h3 {
+      color:var(--accent);
+      font-size:1.1rem;
+      margin:0.5rem 0;
+    }
+    .toolkit-item p {
+      color:#cbd5e1;
+      font-size:0.9rem;
+      line-height:1.3;
+    }
+
+    footer {
+      background:var(--dark-bg);
+      text-align:center;
+      padding:2rem 1rem;
+      color:var(--highlight);
+      font-size:.9rem;
+    }
+  </style>
 </head>
-
 <body>
-        This is my first page with GitHub!
-        Confirm the changes with this new line.
-</body>
 
+  <!-- Header -->
+  <header>
+    <h1>Hooked on AI</h1>
+    <p>Examining the dark psychology behind AI‑driven addiction</p>
+    <div class="links">
+      <a href="#problem">Problem</a>
+      <a href="#learn">Learn</a>
+      <a href="#matters">Why</a>
+      <a href="#blog">Blog</a>
+      <a href="#poll">Poll</a>
+      <a href="#toolkit">Toolkit</a>
+    </div>
+  </header>
+
+  <!-- 1) Problem -->
+  <section id="problem" class="section problem-section">
+    <div class="container flex">
+      <div class="text">
+        <h2>Introduction to the Problem</h2>
+        <p>AI ⇒ endless scrolling</p>
+        <p>Dopamine loops &amp; dark UX</p>
+      </div>
+      <div class="image">
+        <lottie-player
+          src="https://lottie.host/f9c0be59-e3f8-4c9a-9ff9-9fdcb1b6f5bb/C5EcGZutoh.json"
+          background="transparent" speed="1" loop autoplay>
+        </lottie-player>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) Learn -->
+  <section id="learn" class="section learn-section">
+    <div class="container flex reverse">
+      <div class="text">
+        <h2>What You’ll Learn</h2>
+        <p>Hook Model</p>
+        <p>Dopamine &amp; control</p>
+      </div>
+      <div class="image">
+        <lottie-player
+          src="https://lottie.host/26f4dbe5-d85b-4a06-aaa9-4d646a017f4a/2CyBzKOlEd.json"
+          background="transparent" speed="1" loop autoplay>
+        </lottie-player>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Why It Matters -->
+  <section id="matters" class="section matters-section">
+    <div class="container flex">
+      <div class="text">
+        <h2>Why It Matters</h2>
+        <p>AI addiction fuels:</p>
+        <ul>
+          <li>Identity erosion</li>
+          <li>Loss of intimacy</li>
+          <li>Polarization &amp; autonomy loss</li>
+        </ul>
+      </div>
+      <div class="why-icons">
+        <div class="icon-box">
+          <lottie-player
+            src="https://lottie.host/0a9f1f0e-52c7-4a93-a7d0-57e27b3259c8/bogJjw7vE6.json"
+            background="transparent" speed="1" loop autoplay></lottie-player>
+          <span>Identity</span>
+        </div>
+        <div class="icon-box">
+          <lottie-player
+            src="https://lottie.host/5399b42e-0a47-4e3b-9c59-e65a34060e55/ymtoDhe2R8.json"
+            background="transparent" speed="1" loop autoplay></lottie-player>
+          <span>Intimacy</span>
+        </div>
+        <div class="icon-box">
+          <lottie-player
+            src="https://lottie.host/781ba37e-3ec2-4b86-b206-0bb801070805/wM5DOFlGKY.json"
+            background="transparent" speed="1" loop autoplay></lottie-player>
+          <span>Threats</span>
+        </div>
+        <div class="icon-box">
+          <lottie-player
+            src="https://lottie.host/5eb9f19c-ffb3-4401-a56c-d5f2ff1e0cc4/IHplskF9kX.json"
+            background="transparent" speed="1" loop autoplay></lottie-player>
+          <span>Autonomy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Latest Insights (Blog) -->
+  <section id="blog" class="section">
+    <div class="container">
+      <h2 style="color:var(--accent);font-size:2.25rem;margin-bottom:0.5rem;">
+        Latest Insights
+      </h2>
+      <p style="color:var(--highlight);margin-bottom:1.5rem;">
+        Deep‑dive explorations of AI’s dark design patterns
+      </p>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="card-cover">
+            <lottie-player
+              src="https://assets2.lottiefiles.com/packages/lf20_jtpZSV.json"
+              background="transparent" speed="1" loop autoplay>
+            </lottie-player>
+          </div>
+          <div class="card-content">
+            <h3>Why Can't You Stop Scrolling?</h3>
+            <p>How infinite feeds hijack your attention…</p>
+            <a href="#post1" class="read-more">Read More →</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="card-cover">
+            <lottie-player
+              src="https://assets3.lottiefiles.com/packages/lf20_tijocep9.json"
+              background="transparent" speed="1" loop autoplay>
+            </lottie-player>
+          </div>
+          <div class="card-content">
+            <h3>AI’s Secret Tricks: Getting You Hooked</h3>
+            <p>Triggers, rewards &amp; investments…</p>
+            <a href="#post2" class="read-more">Read More →</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="card-cover">
+            <lottie-player
+              src="https://assets5.lottiefiles.com/packages/lf20_oqpmxeuc.json"
+              background="transparent" speed="1" loop autoplay>
+            </lottie-player>
+          </div>
+          <div class="card-content">
+            <h3>Test Your AI Addiction: Take the Poll</h3>
+            <p>10 questions to measure your habit…</p>
+            <a href="#post3" class="read-more">Read More →</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="card-cover">
+            <lottie-player
+              src="https://assets1.lottiefiles.com/packages/lf20_j1adxtyb.json"
+              background="transparent" speed="1" loop autoplay>
+            </lottie-player>
+          </div>
+          <div class="card-content">
+            <h3>Breaking Free: Outsmarting Dark UX</h3>
+            <p>Strategies to reclaim your time…</p>
+            <a href="#post4" class="read-more">Read More →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inline Articles with Lorem Ipsum -->
+  <section id="post1" class="article-section section">
+    <div class="container">
+      <button class="close-btn" onclick="window.close()">Close</button>
+      <h2>Why Can't You Stop Scrolling?</h2>
+      <lottie-player
+        src="https://assets2.lottiefiles.com/packages/lf20_jtpZSV.json"
+        background="transparent" speed="1" loop autoplay>
+      </lottie-player>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula, justo ut scelerisque aliquet, mauris urna consequat eros, eu imperdiet orci tortor vitae urna. Suspendisse potenti. Etiam ultrices, tortor nec vestibulum placerat, sapien odio tincidunt nulla, a egestas lorem risus sit amet metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam egestas, lectus nec venenatis rhoncus, nibh mauris dictum dolor, at aliquet turpis purus non odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus consequat, sapien vitae ultrices porta, libero orci fermentum mauris, sit amet pharetra mi lectus at libero. Integer vitae tortor vitae enim malesuada viverra. Ut suscipit erat eu tellus scelerisque, a dignissim nisl consequat.</p>
+      <p>Sed sit amet nisl sit amet justo sagittis eleifend. Aliquam erat volutpat. Duis vestibulum lorem sed sagittis elementum. In consectetur mauris sed risus commodo, nec fermentum arcu tincidunt. Nulla facilisi. Donec volutpat, libero vitae fringilla vehicula, purus quam consequat risus, et faucibus odio augue vitae sapien. Cras auctor, ligula at placerat fermentum, eros justo suscipit libero, id rhoncus nibh nibh in dolor. Nulla sit amet massa nec sapien facilisis semper in nec magna.</p>
+      <p>Phasellus ac purus ac nisl vulputate commodo. Mauris quis lectus eu erat rutrum facilisis. Ut hendrerit velit vitae nisi commodo, nec pretium urna sagittis. Nam id ligula eu tortor facilisis ultricies. Nulla eu lorem eget purus convallis elementum. Donec id purus sit amet urna vehicula varius. Curabitur imperdiet nulla vitae orci consequat, et placerat tortor tincidunt. Integer sit amet risus eu velit sodales porta nec at erat.</p>
+    </div>
+  </section>
+
+  <section id="post2" class="article-section section">
+    <div class="container">
+      <button class="close-btn" onclick="window.close()">Close</button>
+      <h2>AI’s Secret Tricks: Getting You Hooked</h2>
+      <lottie-player
+        src="https://assets3.lottiefiles.com/packages/lf20_sj3x0r3d.json"
+        background="transparent" speed="1" loop autoplay>
+      </lottie-player>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquet purus non orci ultricies, eu placerat arcu rhoncus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut sit amet pharetra orci. Integer molestie, ante in tincidunt cursus, dolor mi tincidunt urna, sit amet interdum orci velit at turpis. Vivamus suscipit vulputate massa, eu luctus libero vestibulum sed. Sed lacinia, ligula non euismod congue, libero dolor pretium quam, non dignissim justo mi nec eros. Suspendisse at gravida felis. Quisque finibus nunc vel nulla aliquet, ac lobortis lorem scelerisque.</p>
+      <p>Cras nec malesuada sapien. Mauris sed ligula nec sapien fermentum fermentum in a orci. Phasellus vitae eros eget nibh ultrices convallis. Vivamus eu purus in risus molestie consequat. Fusce a libero sed odio gravida aliquet. Vivamus rhoncus porttitor arcu, eget dignissim urna congue vitae. Maecenas feugiat nibh nec leo tristique, nec mollis orci gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin interdum orci a dui aliquet, et aliquet erat efficitur. Nulla facilisi.</p>
+      <p>Nam sed nibh vel urna sollicitudin facilisis. Sed faucibus mauris at purus elementum, eu ultricies lectus euismod. Phasellus aliquet nibh sit amet dolor venenatis volutpat. Etiam ac enim eu felis luctus molestie. Duis sed velit sed lorem pulvinar vulputate. Integer scelerisque dui nibh, non hendrerit purus efficitur vitae. Sed faucibus tincidunt neque nec commodo.</p>
+    </div>
+  </section>
+
+  <section id="post3" class="article-section section">
+    <div class="container">
+      <button class="close-btn" onclick="window.close()">Close</button>
+      <h2>Test Your AI Addiction: Take the Poll</h2>
+      <lottie-player
+        src="https://assets5.lottiefiles.com/packages/lf20_oqpmxeuc.json"
+        background="transparent" speed="1" loop autoplay>
+      </lottie-player>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet arcu euismod, efficitur metus in, fermentum turpis. Integer in nisl non eros convallis lacinia. Suspendisse potenti. Duis euismod aliquet orci, sit amet varius felis sollicitudin at. Quisque ut enim ac metus iaculis congue. Curabitur ac urna vel risus fringilla dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ultricies ligula non mi molestie, at tempus risus aliquet. Proin nec lacus urna. Nullam sed augue nec nisl interdum malesuada.</p>
+      <p>Donec consequat dolor sed urna pulvinar, nec malesuada mi vehicula. Maecenas elementum tellus in urna dictum facilisis. Vivamus eget tellus sit amet mauris tristique tincidunt. Suspendisse at purus nec massa aliquet scelerisque. Integer sed risus eu ligula ullamcorper commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur cursus, mi quis volutpat suscipit, dolor mi tempor magna, sed faucibus libero nisi et sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+      <p>Aliquam erat volutpat. Vestibulum vitae ex sed dolor efficitur faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id tellus nec libero tempor luctus. Integer nec vehicula massa, ut ornare ligula. Maecenas vitae eros ac turpis sagittis venenatis. Quisque fermentum mi vitae orci viverra, ac ultrices sapien fermentum. Etiam finibus auctor velit, et scelerisque purus. Duis malesuada, arcu ut vehicula laoreet, purus nulla elementum nisi, sit amet fermentum lorem mauris sed nisl.</p>
+    </div>
+  </section>
+
+  <section id="post4" class="article-section section">
+    <div class="container">
+      <button class="close-btn" onclick="window.close()">Close</button>
+      <h2>Breaking Free: Outsmarting Dark UX</h2>
+      <lottie-player
+        src="https://assets1.lottiefiles.com/packages/lf20_j1adxtyb.json"
+        background="transparent" speed="1" loop autoplay>
+      </lottie-player>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut urna sed dolor congue ultricies. Donec sit amet feugiat justo. Duis vitae orci nec nunc sollicitudin aliquet. Vestibulum id sapien vitae nisi hendrerit aliquet. Integer ultricies felis at tellus viverra, non pulvinar risus dapibus. Sed vitae nulla at purus aliquet fermentum. Suspendisse potenti.</p>
+      <p>Vivamus id ante eget nisl fringilla ultrices. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque vestibulum lectus vitae ultrices aliquet. Curabitur interdum sapien eget purus ultricies, sit amet bibendum ex vehicula. Duis finibus magna sit amet dolor faucibus, nec scelerisque augue mattis.</p>
+      <p>Sed feugiat tellus a libero pretium, in pellentesque erat lacinia. Nam sit amet ipsum varius, sollicitudin orci sit amet, dictum sapien. Aenean ultrices, mi et commodo pretium, purus orci fermentum neque, vitae fermentum lacus tortor sit amet nisl. In hac habitasse platea dictumst.</p>
+    </div>
+  </section>
+
+  <!-- 5) Poll Section -->
+  <section id="poll" class="section">
+    <div class="container">
+      <div class="quiz-prompt">
+        <h2>Ready to Discover Your AI Habit Level?</h2>
+        <p>Take our 10-question quiz to see how hooked you are.</p>
+        <button id="startQuiz">Take the Quiz →</button>
+      </div>
+      <form id="pollForm" class="poll-form">
+        <!-- Questions 1–10 (unchanged structure) -->
+        <div class="poll-question">
+          <label>1. How often do you find yourself mindlessly scrolling through social media?</label>
+          <label><input type="radio" name="q1" value="1">Never</label>
+          <label><input type="radio" name="q1" value="2">Sometimes</label>
+          <label><input type="radio" name="q1" value="3">Often</label>
+          <label><input type="radio" name="q1" value="4">Almost Always</label>
+        </div>
+        <!-- ... similarly for q2 through q10 ... -->
+        <button type="button" id="pollSubmit">Submit →</button>
+      </form>
+      <div id="pollResult">
+        <div id="scoreDisplay">0/40</div>
+        <div id="levelText"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6) Mindful Use Toolkit -->
+  <section id="toolkit" class="section">
+    <div class="container">
+      <h2>Mindful Use Toolkit</h2>
+      <div class="toolkit-grid">
+        <div class="toolkit-item">
+          <lottie-player
+            src="https://lottie.host/6d4f4e10-2b32-4a9d-a8a3-0db1faa6959b/Limits.json"
+            background="transparent" speed="1" loop autoplay>
+          </lottie-player>
+          <h3>Set Daily Screen‑Time Limits</h3>
+          <p>Use OS/app timers to cap usage and get reminders when you hit your limit.</p>
+        </div>
+        <div class="toolkit-item">
+          <lottie-player
+            src="https://lottie.host/98a7b7f3-a8dd-4e8b-bb07-0b7d9fca3e7e/Prompt.json"
+            background="transparent" speed="1" loop autoplay>
+          </lottie-player>
+          <h3>Enable Mindful‑Scroll Prompts</h3>
+          <p>Insert brief prompts after every 10–15 minutes of scrolling to reflect on intent.</p>
+        </div>
+        <div class="toolkit-item">
+          <lottie-player
+            src="https://lottie.host/aa1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d/Batch.json"
+            background="transparent" speed="1" loop autoplay>
+          </lottie-player>
+          <h3>Batch Notifications</h3>
+          <p>Configure apps to deliver hourly digests instead of real‑time alerts.</p>
+        </div>
+        <div class="toolkit-item">
+          <lottie-player
+            src="https://lottie.host/12345678-90ab-cdef-1234-567890abcdef/Free.json"
+            background="transparent" speed="1" loop autoplay>
+          </lottie-player>
+          <h3>Schedule Tech‑Free Intervals</h3>
+          <p>Designate daily periods—meals, exercise—to fully disconnect and reconnect offline.</p>
+        </div>
+        <div class="toolkit-item">
+          <lottie-player
+            src="https://lottie.host/b1c2d3e4-f5a6-7b8c-9d0e-1f2a3b4c5d6e/Journal.json"
+            background="transparent" speed="1" loop autoplay>
+          </lottie-player>
+          <h3>Reflective Journaling</h3>
+          <p>Log digital habits and moods to spot patterns and identify triggers over time.</p>
+        </div>
+        <div class="toolkit-item">
+          <lottie-player
+            src="https://lottie.host/0f1e2d3c-4b5a-6c7d-8e9f-0a1b2c3d4e5f/Apps.json"
+            background="transparent" speed="1" loop autoplay>
+          </lottie-player>
+          <h3>Use Digital Well‑Being Apps</h3>
+          <p>Explore tools (e.g., Freedom, Forest) that block distractions or gamify focus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Enock Musyoka &amp; Jaisal Sood | Black Mirrors — Dark Psychology
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('header');
+      const adjustPadding = () => document.body.style.paddingTop = header.offsetHeight + 'px';
+      adjustPadding();
+      window.addEventListener('resize', adjustPadding);
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('shrunk', window.scrollY > 150);
+        adjustPadding();
+      });
+
+      document.getElementById('startQuiz').addEventListener('click', () => {
+        document.querySelector('.quiz-prompt').style.display = 'none';
+        document.getElementById('pollForm').style.display = 'block';
+      });
+
+      document.getElementById('pollSubmit').addEventListener('click', () => {
+        let total = 0, allAnswered = true;
+        for (let i = 1; i <= 10; i++) {
+          const ans = document.querySelector(`input[name="q${i}"]:checked`);
+          if (!ans) { allAnswered = false; break; }
+          total += +ans.value;
+        }
+        if (!allAnswered) {
+          alert('Please answer all questions.');
+          return;
+        }
+        document.getElementById('pollForm').style.display = 'none';
+        document.getElementById('scoreDisplay').style.display = 'block';
+        let current = 0;
+        const stepTime = Math.max(20, 800 / total);
+        const timer = setInterval(() => {
+          current++;
+          document.getElementById('scoreDisplay').textContent = `${current}/40`;
+          if (current >= total) {
+            clearInterval(timer);
+            let levelText = total <= 15
+              ? 'Mild AI Influence – you’re mostly in control.'
+              : total <= 25
+                ? 'Moderate AI Addiction – consider mindful strategies.'
+                : 'Severe AI Addiction – time to take back control!';
+            document.getElementById('levelText').textContent = levelText;
+            const link = document.createElement('a');
+            link.href = "#toolkit";
+            link.textContent = "Go to Toolkit →";
+            link.style.color = "var(--accent)";
+            link.style.display = "block";
+            link.style.marginTop = "1rem";
+            document.getElementById('levelText').appendChild(link);
+          }
+        }, stepTime);
+      });
+    });
+  </script>
+</body>
 </html>
