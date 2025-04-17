@@ -34,7 +34,7 @@
       scroll-behavior: smooth;
     }
 
-    /* FIXED ANIMATED HEADER */
+    /* ANIMATED HEADER */
     header {
       position: fixed; top: 0; left: 0; right: 0;
       background: var(--dark-bg);
@@ -220,6 +220,19 @@
       cursor:pointer;
       float:right;
       margin-bottom:1rem;
+    }
+
+    .see-less {
+        display: block;
+        text-align: center;
+         margin-top: 2rem;
+        font-weight: bold;
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+   .see-less:hover {
+        color: #fdba74;
     }
 
     /* POLL SECTION */
@@ -471,7 +484,7 @@
             <a href="#post3" class="read-more">Read More →</a>
           </div>
         </article>
-        <article class="blog-card">
+        <!-- <article class="blog-card">
           <div class="card-cover">
             <lottie-player
               src="https://assets1.lottiefiles.com/packages/lf20_j1adxtyb.json"
@@ -483,7 +496,7 @@
             <p>Strategies to reclaim your time…</p>
             <a href="#post4" class="read-more">Read More →</a>
           </div>
-        </article>
+        </article> -->
       </div>
     </div>
   </section>
@@ -491,7 +504,13 @@
   <!-- Inline Articles with Lorem Ipsum -->
   <section id="post1" class="article-section section">
     <div class="container">
-      <button class="close-btn" onclick="window.close()">Close</button>
+        <!-- <a href="#blog" class="see-less" style="display:block; margin-bottom:1rem; color:var(--accent); font-weight:bold;">← See Less</a> -->
+
+      <!-- <button class="close-btn" onclick="window.close()">Close</button> -->
+
+      <a href="#blog" class="see-less">← See Less</a>
+
+
       <h2>Why Can't You Stop Scrolling?</h2>
       <lottie-player
         src="https://assets2.lottiefiles.com/packages/lf20_jtpZSV.json"
@@ -500,12 +519,19 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula, justo ut scelerisque aliquet, mauris urna consequat eros, eu imperdiet orci tortor vitae urna. Suspendisse potenti. Etiam ultrices, tortor nec vestibulum placerat, sapien odio tincidunt nulla, a egestas lorem risus sit amet metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam egestas, lectus nec venenatis rhoncus, nibh mauris dictum dolor, at aliquet turpis purus non odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus consequat, sapien vitae ultrices porta, libero orci fermentum mauris, sit amet pharetra mi lectus at libero. Integer vitae tortor vitae enim malesuada viverra. Ut suscipit erat eu tellus scelerisque, a dignissim nisl consequat.</p>
       <p>Sed sit amet nisl sit amet justo sagittis eleifend. Aliquam erat volutpat. Duis vestibulum lorem sed sagittis elementum. In consectetur mauris sed risus commodo, nec fermentum arcu tincidunt. Nulla facilisi. Donec volutpat, libero vitae fringilla vehicula, purus quam consequat risus, et faucibus odio augue vitae sapien. Cras auctor, ligula at placerat fermentum, eros justo suscipit libero, id rhoncus nibh nibh in dolor. Nulla sit amet massa nec sapien facilisis semper in nec magna.</p>
       <p>Phasellus ac purus ac nisl vulputate commodo. Mauris quis lectus eu erat rutrum facilisis. Ut hendrerit velit vitae nisi commodo, nec pretium urna sagittis. Nam id ligula eu tortor facilisis ultricies. Nulla eu lorem eget purus convallis elementum. Donec id purus sit amet urna vehicula varius. Curabitur imperdiet nulla vitae orci consequat, et placerat tortor tincidunt. Integer sit amet risus eu velit sodales porta nec at erat.</p>
+      <a href="#blog" class="see-less">← See Less</a>
     </div>
   </section>
 
   <section id="post2" class="article-section section">
     <div class="container">
-      <button class="close-btn" onclick="window.close()">Close</button>
+
+        <!-- <a href="#blog" class="see-less" style="display:block; margin-bottom:1rem; color:var(--accent); font-weight:bold;">← See Less</a> -->
+      <!-- <button class="close-btn" onclick="window.close()">Close</button> -->
+
+      <a href="#blog" class="see-less">← See Less</a>
+
+
       <h2>AI’s Secret Tricks: Getting You Hooked</h2>
       <lottie-player
         src="https://assets3.lottiefiles.com/packages/lf20_sj3x0r3d.json"
@@ -514,12 +540,17 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquet purus non orci ultricies, eu placerat arcu rhoncus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut sit amet pharetra orci. Integer molestie, ante in tincidunt cursus, dolor mi tincidunt urna, sit amet interdum orci velit at turpis. Vivamus suscipit vulputate massa, eu luctus libero vestibulum sed. Sed lacinia, ligula non euismod congue, libero dolor pretium quam, non dignissim justo mi nec eros. Suspendisse at gravida felis. Quisque finibus nunc vel nulla aliquet, ac lobortis lorem scelerisque.</p>
       <p>Cras nec malesuada sapien. Mauris sed ligula nec sapien fermentum fermentum in a orci. Phasellus vitae eros eget nibh ultrices convallis. Vivamus eu purus in risus molestie consequat. Fusce a libero sed odio gravida aliquet. Vivamus rhoncus porttitor arcu, eget dignissim urna congue vitae. Maecenas feugiat nibh nec leo tristique, nec mollis orci gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin interdum orci a dui aliquet, et aliquet erat efficitur. Nulla facilisi.</p>
       <p>Nam sed nibh vel urna sollicitudin facilisis. Sed faucibus mauris at purus elementum, eu ultricies lectus euismod. Phasellus aliquet nibh sit amet dolor venenatis volutpat. Etiam ac enim eu felis luctus molestie. Duis sed velit sed lorem pulvinar vulputate. Integer scelerisque dui nibh, non hendrerit purus efficitur vitae. Sed faucibus tincidunt neque nec commodo.</p>
+      <a href="#blog" class="see-less">← See Less</a>
     </div>
   </section>
 
   <section id="post3" class="article-section section">
     <div class="container">
-      <button class="close-btn" onclick="window.close()">Close</button>
+      <!-- <button class="close-btn" onclick="window.close()">Close</button> -->
+
+      <!-- <a href="#blog" class="see-less" style="display:block; margin-bottom:1rem; color:var(--accent); font-weight:bold;">← See Less</a> -->
+
+
       <h2>Test Your AI Addiction: Take the Poll</h2>
       <lottie-player
         src="https://assets5.lottiefiles.com/packages/lf20_oqpmxeuc.json"
@@ -528,12 +559,18 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet arcu euismod, efficitur metus in, fermentum turpis. Integer in nisl non eros convallis lacinia. Suspendisse potenti. Duis euismod aliquet orci, sit amet varius felis sollicitudin at. Quisque ut enim ac metus iaculis congue. Curabitur ac urna vel risus fringilla dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ultricies ligula non mi molestie, at tempus risus aliquet. Proin nec lacus urna. Nullam sed augue nec nisl interdum malesuada.</p>
       <p>Donec consequat dolor sed urna pulvinar, nec malesuada mi vehicula. Maecenas elementum tellus in urna dictum facilisis. Vivamus eget tellus sit amet mauris tristique tincidunt. Suspendisse at purus nec massa aliquet scelerisque. Integer sed risus eu ligula ullamcorper commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur cursus, mi quis volutpat suscipit, dolor mi tempor magna, sed faucibus libero nisi et sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
       <p>Aliquam erat volutpat. Vestibulum vitae ex sed dolor efficitur faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id tellus nec libero tempor luctus. Integer nec vehicula massa, ut ornare ligula. Maecenas vitae eros ac turpis sagittis venenatis. Quisque fermentum mi vitae orci viverra, ac ultrices sapien fermentum. Etiam finibus auctor velit, et scelerisque purus. Duis malesuada, arcu ut vehicula laoreet, purus nulla elementum nisi, sit amet fermentum lorem mauris sed nisl.</p>
+      <a href="#blog" class="see-less">← See Less</a>
     </div>
   </section>
 
   <section id="post4" class="article-section section">
     <div class="container">
-      <button class="close-btn" onclick="window.close()">Close</button>
+      <!-- <button class="close-btn" onclick="window.close()">Close</button> -->
+
+      <!-- <a href="#blog" class="see-less" style="display:block; margin-bottom:1rem; color:var(--accent); font-weight:bold;">← See Less</a> -->
+
+      <!-- <a href="#blog" class="see-less">← See Less</a> -->
+
       <h2>Breaking Free: Outsmarting Dark UX</h2>
       <lottie-player
         src="https://assets1.lottiefiles.com/packages/lf20_j1adxtyb.json"
@@ -542,6 +579,8 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut urna sed dolor congue ultricies. Donec sit amet feugiat justo. Duis vitae orci nec nunc sollicitudin aliquet. Vestibulum id sapien vitae nisi hendrerit aliquet. Integer ultricies felis at tellus viverra, non pulvinar risus dapibus. Sed vitae nulla at purus aliquet fermentum. Suspendisse potenti.</p>
       <p>Vivamus id ante eget nisl fringilla ultrices. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque vestibulum lectus vitae ultrices aliquet. Curabitur interdum sapien eget purus ultricies, sit amet bibendum ex vehicula. Duis finibus magna sit amet dolor faucibus, nec scelerisque augue mattis.</p>
       <p>Sed feugiat tellus a libero pretium, in pellentesque erat lacinia. Nam sit amet ipsum varius, sollicitudin orci sit amet, dictum sapien. Aenean ultrices, mi et commodo pretium, purus orci fermentum neque, vitae fermentum lacus tortor sit amet nisl. In hac habitasse platea dictumst.</p>
+
+      <a href="#blog" class="see-less">← See Less</a>
     </div>
   </section>
 
@@ -553,8 +592,7 @@
         <p>Take our 10-question quiz to see how hooked you are.</p>
         <button id="startQuiz">Take the Quiz →</button>
       </div>
-      <form id="pollForm" class="poll-form">
-        <!-- Questions 1–10 (unchanged structure) -->
+            <form id="pollForm" class="poll-form">
         <div class="poll-question">
           <label>1. How often do you find yourself mindlessly scrolling through social media?</label>
           <label><input type="radio" name="q1" value="1">Never</label>
@@ -562,7 +600,69 @@
           <label><input type="radio" name="q1" value="3">Often</label>
           <label><input type="radio" name="q1" value="4">Almost Always</label>
         </div>
-        <!-- ... similarly for q2 through q10 ... -->
+        <div class="poll-question">
+          <label>2. Do you feel anxious or restless when you can't check your phone?</label>
+          <label><input type="radio" name="q2" value="1">Never</label>
+          <label><input type="radio" name="q2" value="2">Sometimes</label>
+          <label><input type="radio" name="q2" value="3">Often</label>
+          <label><input type="radio" name="q2" value="4">Almost Always</label>
+        </div>
+        <div class="poll-question">
+          <label>3. How often do notifications disrupt your focus or tasks?</label>
+          <label><input type="radio" name="q3" value="1">Never</label>
+          <label><input type="radio" name="q3" value="2">Sometimes</label>
+          <label><input type="radio" name="q3" value="3">Often</label>
+          <label><input type="radio" name="q3" value="4">Almost Always</label>
+        </div>
+        <div class="poll-question">
+          <label>4. Have you ever lost track of time using an AI-powered app or platform?</label>
+          <label><input type="radio" name="q4" value="1">Never</label>
+          <label><input type="radio" name="q4" value="2">Sometimes</label>
+          <label><input type="radio" name="q4" value="3">Often</label>
+          <label><input type="radio" name="q4" value="4">Almost Always</label>
+        </div>
+        <div class="poll-question">
+          <label>5. Do you open social media apps even when you have no specific reason?</label>
+          <label><input type="radio" name="q5" value="1">Never</label>
+          <label><input type="radio" name="q5" value="2">Sometimes</label>
+          <label><input type="radio" name="q5" value="3">Often</label>
+          <label><input type="radio" name="q5" value="4">Almost Always</label>
+        </div>
+        <div class="poll-question">
+          <label>6. How often do you check your phone during conversations or meals?</label>
+          <label><input type="radio" name="q6" value="1">Never</label>
+          <label><input type="radio" name="q6" value="2">Sometimes</label>
+          <label><input type="radio" name="q6" value="3">Often</label>
+          <label><input type="radio" name="q6" value="4">Almost Always</label>
+        </div>
+        <div class="poll-question">
+          <label>7. Have you tried limiting your screen time and failed?</label>
+          <label><input type="radio" name="q7" value="1">Never</label>
+          <label><input type="radio" name="q7" value="2">Sometimes</label>
+          <label><input type="radio" name="q7" value="3">Often</label>
+          <label><input type="radio" name="q7" value="4">Almost Always</label>
+        </div>
+        <div class="poll-question">
+          <label>8. Do you use AI companions or chatbots for emotional comfort?</label>
+          <label><input type="radio" name="q8" value="1">Never</label>
+          <label><input type="radio" name="q8" value="2">Sometimes</label>
+          <label><input type="radio" name="q8" value="3">Often</label>
+          <label><input type="radio" name="q8" value="4">Almost Always</label>
+        </div>
+        <div class="poll-question">
+          <label>9. Do personalized recommendations often lead you to binge content?</label>
+          <label><input type="radio" name="q9" value="1">Never</label>
+          <label><input type="radio" name="q9" value="2">Sometimes</label>
+          <label><input type="radio" name="q9" value="3">Often</label>
+          <label><input type="radio" name="q9" value="4">Almost Always</label>
+        </div>
+        <div class="poll-question">
+          <label>10. Do you feel guilty or regretful after spending a lot of time online?</label>
+          <label><input type="radio" name="q10" value="1">Never</label>
+          <label><input type="radio" name="q10" value="2">Sometimes</label>
+          <label><input type="radio" name="q10" value="3">Often</label>
+          <label><input type="radio" name="q10" value="4">Almost Always</label>
+        </div>
         <button type="button" id="pollSubmit">Submit →</button>
       </form>
       <div id="pollResult">
@@ -609,7 +709,7 @@
           <h3>Schedule Tech‑Free Intervals</h3>
           <p>Designate daily periods—meals, exercise—to fully disconnect and reconnect offline.</p>
         </div>
-        <div class="toolkit-item">
+        <!-- <div class="toolkit-item">
           <lottie-player
             src="https://lottie.host/b1c2d3e4-f5a6-7b8c-9d0e-1f2a3b4c5d6e/Journal.json"
             background="transparent" speed="1" loop autoplay>
@@ -624,10 +724,29 @@
           </lottie-player>
           <h3>Use Digital Well‑Being Apps</h3>
           <p>Explore tools (e.g., Freedom, Forest) that block distractions or gamify focus.</p>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
+
+  <!-- Disclaimer Section -->
+<!-- Disclaimer Section -->
+<section id="disclaimer" class="section" style="background:#0f172a; padding: 60px 20px;">
+  <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <lottie-player
+      src="https://assets2.lottiefiles.com/packages/lf20_tfb3estd.json"
+      background="transparent" speed="1" style="width: 100px; height: 100px; margin: 0 auto 1rem;" loop autoplay>
+    </lottie-player>
+    <h2 style="color: #f97316; font-size: 1.8rem; margin-bottom: 1rem;">AI‑Generated Content Disclaimer</h2>
+    <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">
+      Some of the content on this website may be generated with the assistance of artificial intelligence (AI).
+      While AI is used to enhance the quality and efficiency of our content, we ensure that all material is
+      reviewed for accuracy and relevance. We strive to provide useful and accurate information, but please note
+      that AI-generated text may not always fully capture the nuances of human perspective or experience.
+      If you have any questions or concerns about specific content, feel free to reach out to us for clarification.
+    </p>
+  </div>
+</section>
 
   <footer>
     &copy; 2025 Enock Musyoka &amp; Jaisal Sood | Black Mirrors — Dark Psychology
