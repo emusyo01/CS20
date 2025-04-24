@@ -6,6 +6,8 @@
   <title>Hooked on AI</title>
   <!-- Lottie player for animations -->
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+  type="module" ></script>
   <style>
     :root {
       --dark-bg: #0f172a;
@@ -351,9 +353,9 @@
     <h1>Hooked on AI</h1>
     <p>Examining the dark psychology behind AI‑driven addiction</p>
     <div class="links">
-      <a href="#problem">Problem</a>
+      <!-- <a href="#problem">Problem</a>
       <a href="#learn">Learn</a>
-      <a href="#matters">Why</a>
+      <a href="#matters">Why</a> -->
       <a href="#blog">Blog</a>
       <a href="#poll">Poll</a>
       <a href="#toolkit">Toolkit</a>
@@ -430,12 +432,14 @@
       <p>📊 How to measure your own AI dependency with our interactive quiz</p>
     </div>
 
-    <div class="image">
-      <lottie-player
-        src="https://lottie.host/26f4dbe5-d85b-4a06-aaa9-4d646a017f4a/2CyBzKOlEd.json"
-        background="transparent" speed="10" loop autoplay>
-      </lottie-player>
-    </div>
+    <dotlottie-player
+  src="https://lottie.host/04e23726-50e4-4c79-a345-0834ad72c624/yWreI7Bduk.lottie"
+  background="transparent"
+  speed="1"
+  style="width: 300px; height: 300px"
+  loop
+  autoplay
+></dotlottie-player>
   </div>
 </section>
 
@@ -461,31 +465,45 @@
 
     <div class="why-icons">
       <div class="icon-box">
-        <lottie-player
-          src="https://lottie.host/0a9f1f0e-52c7-4a93-a7d0-57e27b3259c8/bogJjw7vE6.json"
-          background="transparent" speed="1" style="width: 124px; height: 124px;" loop autoplay></lottie-player>
+
+        <dotlottie-player
+            src="https://lottie.host/663808e2-2982-4aac-bc47-9559e16452ac/YxrVGu0ZTx.lottie"
+            background="transparent" speed="1" style="width: 124px; height: 124px" loop autoplay 
+        ></dotlottie-player>
         <span>Identity</span>
       </div>
 
       <div class="icon-box">
-        <lottie-player
-          src="https://lottie.host/5399b42e-0a47-4e3b-9c59-e65a34060e55/ymtoDhe2R8.json"
-          background="transparent" speed="1" style="width: 124px; height: 124px;" loop autoplay></lottie-player>
+        <dotlottie-player
+            src="https://lottie.host/13b9bbe4-2a26-4c4b-a3dc-2169c0ed723f/aWOsLiZbWV.lottie"
+            background="transparent" speed="1" style="width: 124px; height: 124px" loop autoplay ></dotlottie-player>
         <span>Intimacy</span>
       </div>
 
       <div class="icon-box">
-        <lottie-player
-          src="https://lottie.host/781ba37e-3ec2-4b86-b206-0bb801070805/wM5DOFlGKY.json"
-          background="transparent" speed="1" style="width: 124px; height: 124px;" loop autoplay></lottie-player>
+        <dotlottie-player
+  src="https://lottie.host/1c0b7a38-0708-49ba-9285-71b61bdc637c/6Oy5ikgmTb.lottie"
+  background="transparent"
+  speed="1"
+  style="width: 124px; height: 124px"
+  loop
+  autoplay
+></dotlottie-player>
         <span>Threats</span>
       </div>
 
       <div class="icon-box">
-        <lottie-player
-          src="https://lottie.host/5eb9f19c-ffb3-4401-a56c-d5f2ff1e0cc4/IHplskF9kX.json"
-          background="transparent" speed="1" loop autoplay style="width: 124px; height: 124px;"></lottie-player>
+       
+<dotlottie-player
+src="https://lottie.host/5b94a352-7e23-4f4a-9c97-9350e118fb88/cAEgKFJKbG.lottie"
+background="transparent"
+speed="1"
+style="width: 124px; height: 124px"
+loop
+autoplay
+></dotlottie-player>
         <span>Autonomy</span>
+
       </div>
     </div>
   </div>
@@ -504,10 +522,10 @@
       <div class="blog-grid">
         <article class="blog-card">
           <div class="card-cover">
-            <lottie-player
-              src="https://assets2.lottiefiles.com/packages/lf20_jtpZSV.json"
-              background="transparent" speed="1" loop autoplay>
-            </lottie-player>
+            <dotlottie-player
+            src="https://lottie.host/3da439d9-2715-491a-81b9-84d13c6e7302/f2AKnAatIi.lottie"
+            background="transparent" speed="1" style="width: 236px; height: 236px" loop autoplay
+          ></dotlottie-player>
           </div>
           <div class="card-content">
             <h3>Why Can't You Stop Scrolling?</h3>
@@ -517,10 +535,14 @@
         </article>
         <article class="blog-card">
           <div class="card-cover">
-            <lottie-player
-              src="https://assets3.lottiefiles.com/packages/lf20_tijocep9.json"
-              background="transparent" speed="1" loop autoplay>
-            </lottie-player>
+            <dotlottie-player
+  src="https://lottie.host/260fc0df-f64c-4cec-bca6-1a47d0ee8651/xXv9W76pUy.lottie"
+  background="transparent"
+  speed="1"
+  style="width: 180px; height: 180px"
+  loop
+  autoplay
+></dotlottie-player>
           </div>
           <div class="card-content">
             <h3>AI’s Secret Tricks: Getting You Hooked</h3>
@@ -530,10 +552,15 @@
         </article>
         <article class="blog-card">
           <div class="card-cover">
-            <lottie-player
-              src="https://assets5.lottiefiles.com/packages/lf20_oqpmxeuc.json"
-              background="transparent" speed="1" loop autoplay>
-            </lottie-player>
+            
+<dotlottie-player
+src="https://lottie.host/5b399f02-5dba-4094-9ffb-f49e18f5000a/yZXMvsqpOb.lottie"
+background="transparent"
+speed="1"
+style="width: 180px; height: 180px"
+loop
+autoplay
+></dotlottie-player>
           </div>
           <div class="card-content">
             <h3>Test Your AI Addiction: Take the Poll</h3>
@@ -562,10 +589,21 @@
   <section id="post1" class="article-section section">
     <div class="container">
     <div style="text-align:center; margin-bottom:2rem;">
-      <lottie-player
-        src="https://lottie.host/53f5be1d-92e7-4d56-b7fc-b221b08fe9a3/scrolling.json"
-        background="transparent" speed="1" loop autoplay style="width:200px;height:200px;">
-      </lottie-player>
+
+
+      <div style="display: flex; justify-content: center; ">
+        <dotlottie-player
+          src="https://lottie.host/3da439d9-2715-491a-81b9-84d13c6e7302/f2AKnAatIi.lottie"
+          background="transparent" speed="1" style="width: 256x; height: 256px" loop autoplay>
+        </dotlottie-player>
+      </div>
+
+
+
+
+
+
+
       <h2 style="color: var(--accent); font-size: 2.4rem;">Why Can't You Stop Scrolling?</h2>
       <p style="color: var(--highlight); font-size: 1.25rem;">Understanding the Psychology of Digital Addiction</p>
     </div>
@@ -835,29 +873,44 @@
       <h2>Mindful Use Toolkit</h2>
       <div class="toolkit-grid">
         <div class="toolkit-item">
-          <lottie-player
-            src="https://lottie.host/6d4f4e10-2b32-4a9d-a8a3-0db1faa6959b/Limits.json"
-            background="transparent" speed="1" loop autoplay>
-          </lottie-player>
+          <dotlottie-player
+  src="https://lottie.host/0f7b8e6c-a121-47dc-94a0-b58c646fd8b1/Jof6OoQRgq.lottie"
+  background="transparent"
+  speed="1"
+  style="width: 124px; height: 124px; display: flex; justify-content: center; "
+  loop
+  autoplay
+></dotlottie-player>
           <h3>Set Daily Screen‑Time Limits</h3>
           <p>Use OS/app timers to cap usage and get reminders when you hit your limit.</p>
         </div>
         <div class="toolkit-item">
-          <lottie-player
-            src="https://lottie.host/98a7b7f3-a8dd-4e8b-bb07-0b7d9fca3e7e/Prompt.json"
-            background="transparent" speed="1" loop autoplay>
-          </lottie-player>
+          <dotlottie-player
+  src="https://lottie.host/3e6a419a-2f16-477e-afe7-a5ea270708a4/hN9HneHnZ4.lottie"
+  background="transparent"
+  speed="1"
+  style="width: 124px; height: 124px"
+  loop
+  autoplay
+></dotlottie-player>
           <h3>Enable Mindful‑Scroll Prompts</h3>
           <p>Insert brief prompts after every 10–15 minutes of scrolling to reflect on intent.</p>
         </div>
         <div class="toolkit-item">
-          <lottie-player
-            src="https://lottie.host/aa1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d/Batch.json"
-            background="transparent" speed="1" loop autoplay>
-          </lottie-player>
+          <dotlottie-player
+  src="https://lottie.host/8d7dc208-395d-43f1-9281-f935b4ec84c7/3DhXyRjdIF.lottie"
+  background="transparent"
+  speed="1"
+  style="width: 124px; height: 124px; display: flex; justify-content: center; "
+  loop
+  autoplay
+></dotlottie-player>
           <h3>Batch Notifications</h3>
           <p>Configure apps to deliver hourly digests instead of real‑time alerts.</p>
         </div>
+
+
+<!--         
         <div class="toolkit-item">
           <lottie-player
             src="https://lottie.host/12345678-90ab-cdef-1234-567890abcdef/Free.json"
@@ -865,7 +918,7 @@
           </lottie-player>
           <h3>Schedule Tech‑Free Intervals</h3>
           <p>Designate daily periods—meals, exercise—to fully disconnect and reconnect offline.</p>
-        </div>
+        </div> -->
         <!-- <div class="toolkit-item">
           <lottie-player
             src="https://lottie.host/b1c2d3e4-f5a6-7b8c-9d0e-1f2a3b4c5d6e/Journal.json"
